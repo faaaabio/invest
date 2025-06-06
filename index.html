@@ -1,325 +1,116 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gráfico de Performance</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            display: grid;
-            place-items: center;
-            background-color: #1a1a1a;
-            font-family: 'Inter', system-ui, sans-serif;
-        }
-
-        .card {
-            width: 390px;
-            height: 260px;
-            background-color: #2a2a2a;
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
-        }
-
-        .chart-container {
-            position: relative;
-            height: 100%;
-            width: 100%;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estrutura Layout</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="card">
-        <div class="chart-container">
-            <canvas id="performanceChart"></canvas>
-        </div>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">Caf</div>
+    <nav class="nav">
+      <a href="#">PT</a>
+      <a href="#" class="btn">Entrar</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>The future<br>begins with trust.</h1>
+      <p>Subtítulo ou descrição breve.</p>
     </div>
+    <div class="hero-image placeholder"></div>
+    <div class="hero-thumbs">
+      <div class="placeholder thumb"></div>
+      <div class="placeholder thumb"></div>
+      <div class="placeholder thumb"></div>
+      <div class="placeholder thumb"></div>
+    </div>
+  </section>
 
-    <script>
-        const Cores = {
-            hurst: '#D4AF37',
-            ibov: '#666666',
-            cdi: '#999999',
-            fundo: 'rgba(42, 42, 42, 0.95)',
-            borda: 'rgba(255, 255, 255, 0.1)',
-            grid: 'rgba(255, 255, 255, 0.1)',
-            texto: '#9E9E9E'
-        };
+  <!-- Plataforma Section -->
+  <section class="platform">
+    <h2>Much more than a KYC. A Know Your Everything platform.</h2>
+    <p>Descrição da plataforma.</p>
+    <div class="platform-cards">
+      <div class="placeholder card"></div>
+      <div class="placeholder card"></div>
+      <div class="placeholder card"></div>
+      <div class="placeholder card"></div>
+      <div class="placeholder card"></div>
+      <div class="placeholder card"></div>
+    </div>
+  </section>
 
-        const Taxas = {
-            hurst: 34,
-            ibov: 7,
-            cdi: 15
-        };
+  <!-- Solutions Step Section -->
+  <section class="solutions-step">
+    <h2>Solutions for every step of the journey</h2>
+    <div class="solutions-cards">
+      <div class="placeholder card tall"></div>
+      <div class="placeholder card tall"></div>
+      <div class="placeholder card"></div>
+      <div class="placeholder card"></div>
+      <div class="placeholder card"></div>
+      <div class="placeholder card"></div>
+    </div>
+  </section>
 
-        const calcularCrescimento = (taxa, periodos) => {
-            const taxaMensal = Math.pow(1 + taxa / 100, 1 / 12) - 1;
-            let valores = [];
-            let acumulado = 1;
-            for (let i = 0; i < periodos; i++) {
-                acumulado *= (1 + taxaMensal);
-                valores.push((acumulado - 1) * 100);
-            }
-            return valores;
-        };
+  <!-- Solutions Sectors Section -->
+  <section class="solutions-sectors">
+    <h2>Solutions for all sectors</h2>
+    <div class="sectors-tags">
+      <span class="tag">Bank & Finance</span>
+      <span class="tag">Sports betting</span>
+      <span class="tag">E-commerce</span>
+      <span class="tag">Mobility and Delivery</span>
+      <span class="tag">Crypto & Payments</span>
+      <span class="tag">Health & Insurance</span>
+    </div>
+  </section>
 
-        const criarTooltip = (data) => {
-            const datasets = data.chart.data.datasets;
-            // Pega o índice do primeiro ponto ativo, se existir
-            const index = data.dataPoints && data.dataPoints.length > 0
-                ? data.dataPoints[0].dataIndex
-                : 0;
+  <!-- Trust Section -->
+  <section class="trust">
+    <div class="trust-content">
+      <h2>Trust that proves itself in practice</h2>
+      <div class="trust-logos">
+        <span class="logo-placeholder"></span>
+        <span class="logo-placeholder"></span>
+        <span class="logo-placeholder"></span>
+        <span class="logo-placeholder"></span>
+        <span class="logo-placeholder"></span>
+      </div>
+    </div>
+    <div class="trust-image placeholder"></div>
+  </section>
 
-            // Labels dos meses
-            const labels = data.chart.data.labels;
-            const nomeMes = (Array.isArray(labels) && typeof index === 'number' && index >= 0 && index < labels.length)
-                ? labels[index]
-                : 'Mês desconhecido';
+  <!-- Integration Section -->
+  <section class="integration">
+    <h2>Easy integration.<br>Complete documentation.</h2>
+    <div class="integration-diagram placeholder"></div>
+    <a href="#" class="btn">Ver documentação</a>
+  </section>
 
-            // Monta os valores dos datasets
-            const valores = datasets.map(dataset => {
-                const valor = dataset.data[index];
-                return {
-                    label: dataset.label,
-                    valor: (typeof valor === 'number' && !isNaN(valor)) ? valor.toFixed(2) : '0.00',
-                    cor: dataset.borderColor
-                };
-            });
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="cta-content">
+      <h2>Ready to elevate your company's security?</h2>
+      <a href="#" class="btn">Fale com um especialista</a>
+    </div>
+    <div class="cta-image placeholder"></div>
+  </section>
 
-            // Cria o tooltip normalmente
-            const tooltipEl = document.createElement('div');
-            Object.assign(tooltipEl.style, {
-                position: 'absolute',
-                background: Cores.fundo,
-                color: '#ffffff',
-                border: `1px solid ${Cores.borda}`,
-                borderRadius: '4px',
-                padding: '12px',
-                pointerEvents: 'none',
-                transition: 'opacity 0.2s',
-                fontFamily: "'Inter', system-ui, sans-serif",
-                zIndex: '1000',
-                opacity: '1',
-                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
-            });
-
-            const taxas = {
-                Hurst: Taxas.hurst,
-                IBOV: Taxas.ibov,
-                CDI: Taxas.cdi
-            };
-
-            tooltipEl.innerHTML = `
-                <div style="color: ${Cores.hurst}; font-weight: 700; font-size: 15px; margin-bottom: 10px; letter-spacing: 0.5px;">
-                    ${nomeMes}
-                </div>
-                <div style="font-size: 13px; display: flex; flex-direction: column; gap: 6px; min-width: 180px;">
-                    ${valores.map(({label, valor, cor}) => `
-                        <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
-                            <span style="display: flex; align-items: center; gap: 8px;">
-                                <span style="width: 10px; height: 10px; background: ${cor}; border-radius: 50%; display: inline-block;"></span>
-                                <span style="color: #fff; font-weight: 500;">${label} <span style="color: #aaa; font-size: 11px;">(${taxas[label]}% a.a.)</span></span>
-                            </span>
-                            <span style="font-weight: 600; color: #fff; letter-spacing: 0.2px;">${valor}%</span>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-
-            return tooltipEl;
-        };
-
-        const ctx = document.getElementById('performanceChart').getContext('2d');
-        const dadosHurst = calcularCrescimento(Taxas.hurst, 12);
-        const mesAlvo = dadosHurst.length - 1;
-        let activeTooltip = null;
-
-        console.log('Hurst:', calcularCrescimento(Taxas.hurst, 12));
-        console.log('IBOV:', calcularCrescimento(Taxas.ibov, 12));
-        console.log('CDI:', calcularCrescimento(Taxas.cdi, 12));
-
-        const textPlugin = {
-            id: 'textPlugin',
-            afterDraw(chart) {
-                const meta = chart.getDatasetMeta(0);
-                if (
-                    meta &&
-                    Array.isArray(meta.data) &&
-                    mesAlvo >= 0 &&
-                    mesAlvo < meta.data.length &&
-                    meta.data[mesAlvo]
-                ) {
-                    const point = meta.data[mesAlvo];
-                    const ctx = chart.ctx;
-                    ctx.save();
-                    ctx.font = '12px Inter';
-                    ctx.fillStyle = Cores.hurst;
-                    ctx.textAlign = 'left';
-                    ctx.fillText('34% Hurst', point.x + 10, point.y - 10);
-                    ctx.restore();
-                }
-            }
-        };
-
-        // Função para gerar os nomes dos últimos 12 meses por extenso
-        function gerarUltimosMeses() {
-            const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-            const dataAtual = new Date();
-            let labels = [];
-            for (let i = 11; i >= 0; i--) {
-                const d = new Date(dataAtual.getFullYear(), dataAtual.getMonth() - i, 1);
-                const mes = meses[d.getMonth()];
-                const ano = d.getFullYear();
-                labels.push(`${mes} ${ano}`);
-            }
-            return labels;
-        }
-
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: gerarUltimosMeses(),
-                datasets: [
-                    {
-                        label: 'Hurst',
-                        data: dadosHurst,
-                        borderColor: Cores.hurst,
-                        borderWidth: 2,
-                        tension: 0.4,
-                        backgroundColor: Cores.hurst
-                    },
-                    {
-                        label: 'IBOV',
-                        data: calcularCrescimento(Taxas.ibov, 12),
-                        borderColor: Cores.ibov,
-                        borderWidth: 2,
-                        tension: 0.4,
-                        backgroundColor: Cores.ibov
-                    },
-                    {
-                        label: 'CDI',
-                        data: calcularCrescimento(Taxas.cdi, 12),
-                        borderColor: Cores.cdi,
-                        borderWidth: 2,
-                        tension: 0.4,
-                        backgroundColor: Cores.cdi
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                interaction: {
-                    mode: 'index',
-                    intersect: false
-                },
-                onClick(_, elements) {
-                    if (!elements.length) {
-                        if (activeTooltip) {
-                            document.body.removeChild(activeTooltip);
-                            activeTooltip = null;
-                        }
-                        return;
-                    }
-                    
-                    const [{datasetIndex, index}] = elements;
-                    this.tooltip.setActiveElements([{datasetIndex, index}]);
-                    this.update('none');
-                },
-                onHover(_, elements) {
-                    if (!elements.length && activeTooltip) {
-                        document.body.removeChild(activeTooltip);
-                        activeTooltip = null;
-                    }
-                },
-                plugins: {
-                    legend: {display: false},
-                    tooltip: {
-                        enabled: false,
-                        external(context) {
-                            if (!context.tooltip || context.tooltip.opacity === 0) {
-                                if (activeTooltip) {
-                                    document.body.removeChild(activeTooltip);
-                                    activeTooltip = null;
-                                }
-                                return;
-                            }
-
-                            if (activeTooltip) {
-                                document.body.removeChild(activeTooltip);
-                                activeTooltip = null;
-                            }
-
-                            const tooltipEl = criarTooltip(context.tooltip);
-                            const position = context.chart.canvas.getBoundingClientRect();
-                            const tooltipRect = tooltipEl.getBoundingClientRect();
-                            
-                            // Ajustar posição para não sair da tela
-                            let left = position.left + context.tooltip.caretX - (tooltipRect.width / 2);
-                            let top = position.top + context.tooltip.caretY - tooltipRect.height - 10;
-
-                            // Ajustar horizontalmente
-                            if (left < 0) left = 0;
-                            if (left + tooltipRect.width > window.innerWidth) {
-                                left = window.innerWidth - tooltipRect.width;
-                            }
-
-                            // Ajustar verticalmente
-                            if (top < 0) {
-                                top = position.top + context.tooltip.caretY + 10;
-                            }
-
-                            tooltipEl.style.left = `${left}px`;
-                            tooltipEl.style.top = `${top}px`;
-                            
-                            document.body.appendChild(tooltipEl);
-                            activeTooltip = tooltipEl;
-
-                            // Remover tooltip após 3 segundos apenas se não houver interação
-                            const timeout = setTimeout(() => {
-                                if (activeTooltip === tooltipEl) {
-                                    tooltipEl.style.opacity = '0';
-                                    setTimeout(() => {
-                                        if (activeTooltip === tooltipEl) {
-                                            document.body.removeChild(tooltipEl);
-                                            activeTooltip = null;
-                                        }
-                                    }, 200);
-                                }
-                            }, 3000);
-
-                            // Limpar timeout se houver nova interação
-                            tooltipEl.addEventListener('mouseenter', () => clearTimeout(timeout));
-                        }
-                    }
-                },
-                scales: {
-                    x: {
-                        grid: {display: false},
-                        ticks: {display: false},
-                        border: {display: false}
-                    },
-                    y: {
-                        min: 0,
-                        max: 40,
-                        grid: {
-                            color: Cores.grid,
-                            drawBorder: false
-                        },
-                        ticks: {
-                            color: Cores.texto,
-                            font: {size: 10},
-                            callback: value => `${value.toFixed(0)}%`
-                        },
-                        border: {display: false}
-                    }
-                }
-            },
-            plugins: [textPlugin]
-        });
-    </script>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="logo">Caf</div>
+      <div class="footer-links">
+        <a href="#">Política de privacidade</a>
+        <a href="#">Termos de uso</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html> 
